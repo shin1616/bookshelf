@@ -5,7 +5,7 @@ YourBookShelf
 # アプリケーション概要  
 "YourBookShelf"は本を管理するアプリです。
 # URL
-https://
+https://your-book-shelf.herokuapp.com/
 # テスト用アカウント  
 Email: test1@test.com
 Pass:zaq123
