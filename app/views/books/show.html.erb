@@ -1,0 +1,78 @@
+<%= render "shared/header" %>
+
+<%# 商品の概要 %>
+<div class="item-show">
+  <div class="item-box">
+    <div class="item-img-content">
+      <%= link_to (image_tag(@book['mediumImageUrl'], style: "width: 70px;height: 100px;display: inline-block;")), @book['itemUrl'] %>
+        <div class="items-img"></div>
+    </div>
+        <%= link_to "商品の編集", edit_book_path(@book), method: :get, class: "item-red-btn" %>
+        <p class="or-text">or</p>
+        <%= link_to "削除", book_path(@book), method: :delete, class:"item-destroy" %>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">タイトル</th>
+          <td class="detail-value"><%= @book.title %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">著者</th>
+          <td class="detail-value"><%= @book.author %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">出版社</th>
+          <td class="detail-value"><%= @book.publisherName %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">価格</th>
+          <td class="detail-value">¥<%= @book.itemPrice.to_s(:delimited, delimiter: ',') %>[税込]</td>
+        </tr>
+        <tr>
+          <th class="detail-item">書籍サイズ</th>
+          <td class="detail-value"><%= @book.size %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">書籍コード</th>
+          <td class="detail-value"><%= @book.isbn %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="option">
+      <div class="favorite-btn">
+        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <span>不適切な商品の通報</span>
+      </div>
+    </div>
+  </div>
+  <%# /商品の概要 %>
+
+  <div class="comment-box">
+    <form>
+      <textarea class="comment-text"></textarea>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <button type="submit" class="comment-btn">
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <span>コメントする<span>
+      </button>
+    </form>
+  </div>
+  <div class="links">
+    <a href="#" class="change-item-btn">
+      ＜ 前の商品
+    </a>
+    <a href="#" class="change-item-btn">
+      後ろの商品 ＞
+    </a>
+  </div>
+</div>
+
+<%= render "shared/footer" %>
