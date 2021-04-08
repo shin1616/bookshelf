@@ -1,0 +1,11 @@
+#child {
+  width: 33vh;
+  height: 33vh;
+  object-fit: contain;
+}
+
+.images{
+  width: 33vh;
+  height: 33vh;
+  object-fit: contain;
+}

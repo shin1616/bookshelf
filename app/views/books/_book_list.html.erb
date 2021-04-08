@@ -1,0 +1,52 @@
+<% if @books.present? %>
+	<h2>検索結果</h2>
+  <% @books.each do |book| %>
+  	<%= form_with model: @book do |f| %>
+
+    <div class="list">
+    <% if book['small_image_url'] %>
+      <%= link_to (image_tag(book['mediumImageUrl'], style: "width: 70px;height: 100px;display: inline-block;")), book['itemUrl'] %>
+    <% end %>
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="detail-item">タイトル</th>
+          <td class="detail-value"><%= book.title %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">著者</th>
+          <td class="detail-value"><%= book.author %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">出版社</th>
+          <td class="detail-value"><%= book.publisher_name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">価格</th>
+          <td class="detail-value">¥<%= book.item_price.to_s(:delimited, delimiter: ',') %>[税込]</td>
+        </tr>
+        <tr>
+          <th class="detail-item">書籍サイズ</th>
+          <td class="detail-value"><%= book.size %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">書籍コード</th>
+          <td class="detail-value"><%= book.isbn %></td>
+        </tr>
+      </tbody>
+    </table>
+      <%= f.hidden_field :title, value: book['title']  %>
+    	<%= f.hidden_field :author, value: book['author'] %>
+    	<%= f.hidden_field :mediumImageUrl, value: book['mediumImageUrl']  %>
+ 	    <%= f.hidden_field :itemUrl,value: book['itemUrl']  %>
+ 	    <%= f.hidden_field :publisherName,value: book['publisherName']  %>
+ 	    <%= f.hidden_field :itemPrice,value: book['itemPrice']  %>
+ 	    <%= f.hidden_field :size,value: book['size']  %>
+ 	    <%= f.hidden_field :isbn,value: book['isbn']  %>
+    <%= f.submit "My本棚に登録する" %>
+    </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+
